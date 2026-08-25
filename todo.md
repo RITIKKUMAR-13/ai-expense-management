@@ -36,4 +36,4 @@
 - [x] Build a finance dashboard with category and monthly spending visualizations.
 - [x] Add a server-side AI insight service that summarizes only user-authorized expense aggregates.
 - [x] Rebuild the responsive UI with dashboard, transactions, budgets, insights, and dark mode.
-- [ ] Save final checkpoint and deliver the validated Spendwise AI working website.
+- [x] Save final checkpoint and deliver the validated Spendwise AI working website.
