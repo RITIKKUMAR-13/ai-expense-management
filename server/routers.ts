@@ -14,6 +14,9 @@ import {
   updateAppointmentStatus,
   updatePatientStatus,
   setBudget,
+  addSavingsContribution,
+  createSavingsGoal,
+  listSavingsGoals,
 } from "./db";
 import {
   createAppointmentInput,
@@ -22,6 +25,7 @@ import {
   updatePatientStatusInput,
 } from "./hospitalSchemas";
 import { createExpenseInput, dashboardInput, deleteExpenseInput, expenseInsightOutput, setBudgetInput } from "./expenseSchemas";
+import { addSavingsContributionInput, createSavingsGoalInput } from "./savingsSchemas";
 import { invokeLLM } from "./_core/llm";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 
@@ -80,6 +84,17 @@ export const appRouter = router({
     budgets: router({
       set: protectedProcedure.input(setBudgetInput).mutation(async ({ ctx, input }) => {
         await setBudget(ctx.user.id, input);
+        return { success: true } as const;
+      }),
+    }),
+    savings: router({
+      list: protectedProcedure.query(({ ctx }) => listSavingsGoals(ctx.user.id)),
+      create: protectedProcedure.input(createSavingsGoalInput).mutation(async ({ ctx, input }) => {
+        await createSavingsGoal(ctx.user.id, input);
+        return { success: true } as const;
+      }),
+      contribute: protectedProcedure.input(addSavingsContributionInput).mutation(async ({ ctx, input }) => {
+        await addSavingsContribution(ctx.user.id, input);
         return { success: true } as const;
       }),
     }),

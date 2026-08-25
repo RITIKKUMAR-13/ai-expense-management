@@ -93,3 +93,29 @@ export const budgets = mysqlTable("budgets", {
 
 export type Expense = typeof expenses.$inferSelect;
 export type Budget = typeof budgets.$inferSelect;
+
+/** Important-purchase savings target owned by one authenticated user. */
+export const savingsGoals = mysqlTable("savingsGoals", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  title: varchar("title", { length: 100 }).notNull(),
+  icon: mysqlEnum("icon", ["laptop", "mobile", "travel", "home", "other"]).notNull(),
+  targetPaise: int("targetPaise").notNull(),
+  targetDate: timestamp("targetDate"),
+  status: mysqlEnum("status", ["active", "completed"]).default("active").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => [index("savings_goals_owner_idx").on(table.ownerId, table.status)]);
+
+/** Additive deposits against a savings goal. Amounts use paise for exact arithmetic. */
+export const savingsContributions = mysqlTable("savingsContributions", {
+  id: int("id").autoincrement().primaryKey(),
+  goalId: int("goalId").notNull().references(() => savingsGoals.id, { onDelete: "cascade" }),
+  ownerId: int("ownerId").notNull(),
+  amountPaise: int("amountPaise").notNull(),
+  note: varchar("note", { length: 160 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [index("savings_contributions_goal_idx").on(table.goalId), index("savings_contributions_owner_idx").on(table.ownerId)]);
+
+export type SavingsGoal = typeof savingsGoals.$inferSelect;
+export type SavingsContribution = typeof savingsContributions.$inferSelect;

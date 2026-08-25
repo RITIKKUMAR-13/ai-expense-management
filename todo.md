@@ -56,4 +56,12 @@
 - [x] Show each category budget with planned, spent, and remaining amounts in the dashboard and budget view.
 - [x] Update metrics, charts, and navigation to match the revised UI direction.
 - [x] Validate budget math, theme persistence, and responsive layout.
-- [ ] Deliver the revised finance dashboard.
+- [x] Deliver the revised finance dashboard.
+
+## Savings Goals for Important Purchases
+
+- [x] Add user-scoped savings goals and contribution persistence for purchases such as laptops and mobiles.
+- [x] Provide icon choices, target amount, saved amount, remaining balance, and goal status.
+- [x] Add a Savings Goals page, dashboard preview, goal creation, and contribution interactions.
+- [x] Validate goal progress and remaining-balance calculations on desktop and mobile.
+- [ ] Deliver the savings goals enhancement.

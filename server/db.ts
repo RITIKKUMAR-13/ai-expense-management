@@ -1,6 +1,6 @@
 import { and, desc, eq, gte, lte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { appointments, budgets, expenses, InsertUser, patients, users } from "../drizzle/schema";
+import { appointments, budgets, expenses, InsertUser, patients, savingsContributions, savingsGoals, users } from "../drizzle/schema";
 import type { z } from "zod";
 import type {
   createAppointmentInput,
@@ -9,6 +9,7 @@ import type {
   updatePatientStatusInput,
 } from "./hospitalSchemas";
 import type { createExpenseInput, setBudgetInput } from "./expenseSchemas";
+import type { addSavingsContributionInput, createSavingsGoalInput } from "./savingsSchemas";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -103,6 +104,8 @@ type CreateAppointmentInput = z.infer<typeof createAppointmentInput>;
 type UpdateAppointmentStatusInput = z.infer<typeof updateAppointmentStatusInput>;
 type CreateExpenseInput = z.infer<typeof createExpenseInput>;
 type SetBudgetInput = z.infer<typeof setBudgetInput>;
+type CreateSavingsGoalInput = z.infer<typeof createSavingsGoalInput>;
+type AddSavingsContributionInput = z.infer<typeof addSavingsContributionInput>;
 
 async function requireDb() {
   const db = await getDb();
@@ -276,4 +279,45 @@ export async function getExpenseDashboard(ownerId: number, periodKey: string) {
       transactionCount: expenseRows.length,
     },
   };
+}
+
+export async function listSavingsGoals(ownerId: number) {
+  const db = await requireDb();
+  const [goals, contributions] = await Promise.all([
+    db.select().from(savingsGoals).where(eq(savingsGoals.ownerId, ownerId)).orderBy(desc(savingsGoals.updatedAt)),
+    db.select().from(savingsContributions).where(eq(savingsContributions.ownerId, ownerId)).orderBy(desc(savingsContributions.createdAt)),
+  ]);
+  const savedByGoal = contributions.reduce<Record<number, number>>((result, contribution) => {
+    result[contribution.goalId] = (result[contribution.goalId] || 0) + contribution.amountPaise;
+    return result;
+  }, {});
+  return goals.map((goal) => ({ ...goal, savedPaise: savedByGoal[goal.id] || 0 }));
+}
+
+export async function createSavingsGoal(ownerId: number, input: CreateSavingsGoalInput) {
+  const db = await requireDb();
+  await db.insert(savingsGoals).values({
+    ownerId,
+    title: input.title,
+    icon: input.icon,
+    targetPaise: input.targetPaise,
+    targetDate: input.targetDate || null,
+    status: "active",
+  });
+}
+
+export async function addSavingsContribution(ownerId: number, input: AddSavingsContributionInput) {
+  const db = await requireDb();
+  const goalRows = await db.select().from(savingsGoals)
+    .where(and(eq(savingsGoals.id, input.goalId), eq(savingsGoals.ownerId, ownerId))).limit(1);
+  const goal = goalRows[0];
+  if (!goal) throw new Error("Savings goal was not found in your private workspace.");
+  if (goal.status === "completed") throw new Error("This savings goal is already complete.");
+
+  await db.insert(savingsContributions).values({ ownerId, goalId: input.goalId, amountPaise: input.amountPaise, note: input.note || null });
+  const totalRows = await db.select().from(savingsContributions).where(and(eq(savingsContributions.goalId, input.goalId), eq(savingsContributions.ownerId, ownerId)));
+  const savedPaise = totalRows.reduce((total, contribution) => total + contribution.amountPaise, 0);
+  if (savedPaise >= goal.targetPaise) {
+    await db.update(savingsGoals).set({ status: "completed", updatedAt: new Date() }).where(eq(savingsGoals.id, goal.id));
+  }
 }

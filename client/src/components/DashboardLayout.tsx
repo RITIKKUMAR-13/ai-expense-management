@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { BrainCircuit, LayoutDashboard, LogOut, PanelLeft, ReceiptText, Target, WalletCards } from "lucide-react";
+import { BrainCircuit, LayoutDashboard, LogOut, PanelLeft, PiggyBank, ReceiptText, Target, WalletCards } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -31,6 +31,7 @@ const menuItems = [
   { icon: LayoutDashboard, label: "Overview", path: "/" },
   { icon: ReceiptText, label: "Expenses", path: "/expenses" },
   { icon: Target, label: "Budgets", path: "/budgets" },
+  { icon: PiggyBank, label: "Savings goals", path: "/savings" },
   { icon: BrainCircuit, label: "AI insights", path: "/insights" },
 ];
 
