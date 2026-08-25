@@ -1,22 +1,24 @@
 /**
- * Hospital login design reminder: clinical confidence, quiet navy structure, warm white
- * surfaces, teal status signals, and clear role-based access without decorative imagery.
+ * Clinical Editorial Protocol: an asymmetric hospital access briefing with a care-signal
+ * canvas, numbered stages, custom role contexts, and a low-glare dark mode.
  */
 import { FormEvent, useEffect, useState } from "react";
 import {
   ArrowRight,
-  CheckCircle2,
+  Check,
   ChevronRight,
   ClipboardPlus,
   Eye,
   EyeOff,
   HeartPulse,
+  KeyRound,
   LockKeyhole,
   Moon,
   ShieldCheck,
-  Stethoscope,
+  Sparkles,
   Sun,
   UserCog,
+  X,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -24,9 +26,27 @@ import { Input } from "@/components/ui/input";
 
 type Role = "Receptionist" | "Hospital Manager";
 
-const roles: Array<{ name: Role; description: string; icon: typeof ClipboardPlus }> = [
-  { name: "Receptionist", description: "Appointments, patient check-in and daily front-desk tasks.", icon: ClipboardPlus },
-  { name: "Hospital Manager", description: "Operations, staff overview and performance reporting.", icon: UserCog },
+const roles: Array<{
+  name: Role;
+  eyebrow: string;
+  description: string;
+  insight: string;
+  icon: typeof ClipboardPlus;
+}> = [
+  {
+    name: "Receptionist",
+    eyebrow: "FRONT DESK",
+    description: "Manage arrivals, appointments and patient flow with clarity.",
+    insight: "Your front-desk board will be ready on entry.",
+    icon: ClipboardPlus,
+  },
+  {
+    name: "Hospital Manager",
+    eyebrow: "OPERATIONS",
+    description: "Review staffing, operations and care-performance signals.",
+    insight: "Your operations briefing will be ready on entry.",
+    icon: UserCog,
+  },
 ];
 
 export default function Home() {
@@ -34,10 +54,10 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
+  const selectedRole = roles.find((item) => item.name === role) ?? roles[0];
 
   useEffect(() => {
-    const savedTheme = window.sessionStorage.getItem("medora-theme");
-    setIsDark(savedTheme === "dark");
+    setIsDark(window.sessionStorage.getItem("medora-theme") === "dark");
   }, []);
 
   const changeTheme = () => {
@@ -54,106 +74,90 @@ export default function Home() {
       toast.error("Enter your work email to continue.");
       return;
     }
-    toast.success(`${role} portal verified. Your secure workspace is ready.`);
+    toast.success(`${role} access confirmed. Taking you to your workspace.`);
   };
 
   return (
-    <div className={`hospital-shell ${isDark ? "hospital-dark" : ""}`}>
-      <section className="hospital-intro">
-        <div className="hospital-intro-grid" />
-        <div className="hospital-intro-content">
-          <div className="brand-lockup">
-            <span className="brand-symbol"><HeartPulse size={22} strokeWidth={2.4} /></span>
-            <span className="brand-name">Medora<span>Care</span></span>
-          </div>
+    <div className={`protocol-portal ${isDark ? "protocol-dark" : ""}`}>
+      <aside className="care-canvas">
+        <div className="canvas-rule canvas-rule-one" />
+        <div className="canvas-rule canvas-rule-two" />
+        <div className="canvas-orbit"><i /><i /><i /><b /></div>
 
-          <div className="intro-copy">
-            <p className="intro-kicker"><span /> HOSPITAL OPERATING SYSTEM</p>
-            <h1>Care that moves<br />with clarity.</h1>
-            <p className="intro-description">One protected workspace for your front desk, hospital operations and every moment of patient care in between.</p>
+        <div className="canvas-top">
+          <div className="medora-lockup">
+            <span className="medora-mark"><HeartPulse size={19} strokeWidth={2.5} /></span>
+            <span className="medora-wordmark">medora<span>care</span></span>
           </div>
-
-          <div className="intro-features">
-            <div className="intro-feature"><span><ShieldCheck size={18} /></span><div><p>Protected by design</p><small>Role-based access and secure sessions</small></div></div>
-            <div className="intro-feature"><span><Stethoscope size={18} /></span><div><p>Built for every shift</p><small>Focused workflows for hospital teams</small></div></div>
-          </div>
+          <span className="system-id">SYSTEM / 01</span>
         </div>
-        <div className="intro-footer"><span>MEDORA CARE SYSTEMS</span><span>© 2026</span></div>
-      </section>
 
-      <main className="login-stage">
-        <header className="login-header">
-          <div className="brand-lockup brand-mobile">
-            <span className="brand-symbol"><HeartPulse size={19} strokeWidth={2.4} /></span>
-            <span className="brand-name">Medora<span>Care</span></span>
-          </div>
-          <button type="button" className="theme-switch" onClick={changeTheme} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
-            <span className={!isDark ? "theme-switch-active" : ""}><Sun size={15} /></span>
-            <span className={isDark ? "theme-switch-active" : ""}><Moon size={15} /></span>
+        <div className="canvas-story">
+          <p className="signal-label"><span /> ACCESS PROTOCOL</p>
+          <h1>A better start<br />to every care shift.</h1>
+          <p className="canvas-description">A focused entry point for the people who keep care moving: one clear signal, then the right workspace.</p>
+        </div>
+
+        <div className="care-status-card">
+          <div className="status-card-top"><span className="pulse-dot" /><p>Clinical system status</p><span className="status-ready">READY</span></div>
+          <div className="status-reading"><strong>All systems<br />calm.</strong><span className="reading-index">01<span>/ 01</span></span></div>
+          <div className="status-lines"><span /><span /><span /><span /><span /><span /><span /></div>
+          <p className="status-copy">A quiet, secure handoff into your role-specific workspace.</p>
+        </div>
+
+        <div className="canvas-bottom"><span>MEDORA CARE SYSTEMS</span><span>ACCESS LAYER</span></div>
+      </aside>
+
+      <main className="access-sheet">
+        <header className="sheet-topbar">
+          <div className="mobile-brand medora-lockup"><span className="medora-mark"><HeartPulse size={17} strokeWidth={2.5} /></span><span className="medora-wordmark">medora<span>care</span></span></div>
+          <div className="security-chip"><ShieldCheck size={14} /> Private access</div>
+          <button type="button" onClick={changeTheme} className="mode-button" aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
+            <span className={!isDark ? "mode-active" : ""}><Sun size={14} /></span>
+            <span className={isDark ? "mode-active" : ""}><Moon size={14} /></span>
           </button>
         </header>
 
-        <div className="login-frame">
-          <div className="login-heading">
-            <p className="overline">SECURE ACCESS</p>
-            <h2>Welcome back.</h2>
-            <p>Choose your workspace, then sign in to continue your shift.</p>
+        <div className="sheet-flow">
+          <div className="sheet-heading">
+            <div className="heading-index"><span>ACCESS</span><b>01</b></div>
+            <div><p className="sheet-overline">GOOD TO SEE YOU</p><h2>Enter with<br /><em>clarity.</em></h2></div>
+            <p>Three short steps, then your care workspace is ready.</p>
           </div>
 
-          <div className="role-picker" aria-label="Choose your workspace">
-            {roles.map(({ name, description, icon: Icon }) => (
-              <button
-                type="button"
-                key={name}
-                className={`role-option ${role === name ? "role-option-active" : ""}`}
-                onClick={() => setRole(name)}
-                aria-pressed={role === name}
-              >
-                <span className="role-icon"><Icon size={19} strokeWidth={2} /></span>
-                <span className="role-copy"><strong>{name}</strong><small>{description}</small></span>
-                <span className="role-radio">{role === name && <CheckCircle2 size={16} />}</span>
-              </button>
-            ))}
-          </div>
-
-          <form onSubmit={submitLogin} className="login-form">
-            <label className="field-label" htmlFor="work-email">Work email</label>
-            <Input
-              id="work-email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="name@hospital.com"
-              type="email"
-              autoComplete="email"
-              className="hospital-input"
-            />
-
-            <div className="mt-5 flex items-center justify-between gap-3">
-              <label className="field-label !mb-0" htmlFor="password">Password</label>
-              <button type="button" onClick={() => toast.info("Password reset instructions will be sent to your work email.")} className="text-button">Forgot password?</button>
+          <section className="protocol-section role-stage" aria-labelledby="role-title">
+            <div className="section-meta"><span>01</span><div><p>IDENTIFY YOUR ROLE</p><small id="role-title">Select the workspace that fits your responsibility.</small></div></div>
+            <div className="role-tiles">
+              {roles.map(({ name, eyebrow, description, icon: Icon }) => (
+                <button type="button" key={name} onClick={() => setRole(name)} className={`role-tile ${role === name ? "role-tile-selected" : ""}`} aria-pressed={role === name}>
+                  <span className="tile-icon"><Icon size={18} /></span>
+                  <span className="tile-content"><small>{eyebrow}</small><strong>{name}</strong><em>{description}</em></span>
+                  <span className="tile-check">{role === name ? <Check size={14} strokeWidth={3} /> : <i />}</span>
+                </button>
+              ))}
             </div>
-            <div className="password-field">
-              <Input id="password" placeholder="Enter your password" type={showPassword ? "text" : "password"} autoComplete="current-password" className="hospital-input pr-12" />
-              <button type="button" className="password-toggle" onClick={() => setShowPassword((current) => !current)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button>
-            </div>
+          </section>
 
-            <div className="signin-row">
-              <label className="remember-check"><input type="checkbox" defaultChecked /><span />Remember this device</label>
-              <span className="signin-role">Signing in as <strong>{role}</strong></span>
-            </div>
+          <form onSubmit={submitLogin}>
+            <section className="protocol-section auth-stage" aria-labelledby="auth-title">
+              <div className="section-meta"><span>02</span><div><p>CONFIRM YOUR ACCESS</p><small id="auth-title">Your account is protected with a secure hospital session.</small></div></div>
+              <div className="field-stack">
+                <label className="protocol-label" htmlFor="work-email">Work email<Input id="work-email" value={email} onChange={(event) => setEmail(event.target.value)} type="email" autoComplete="email" placeholder="name@hospital.com" className="protocol-input" /></label>
+                <div className="password-label-row"><label className="protocol-label" htmlFor="password">Password</label><button type="button" onClick={() => toast.info("Password reset instructions will be sent to your work email.")} className="quiet-link">Reset password</button></div>
+                <div className="password-wrap"><Input id="password" type={showPassword ? "text" : "password"} autoComplete="current-password" placeholder="Enter your password" className="protocol-input pr-12" /><button type="button" className="password-eye" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></div>
+              </div>
+            </section>
 
-            <Button type="submit" className="signin-button">
-              Sign in to workspace <ArrowRight size={18} />
-            </Button>
+            <section className="protocol-section entry-stage" aria-labelledby="entry-title">
+              <div className="section-meta section-meta-compact"><span>03</span><div><p id="entry-title">ENTER YOUR WORKSPACE</p><small>{selectedRole.insight}</small></div></div>
+              <div className="entry-actions"><Button type="submit" className="protocol-submit">Continue as {role} <ArrowRight size={17} /></Button><button type="button" onClick={() => toast.info("Single sign-on will redirect you to your hospital identity provider.")} className="sso-control"><KeyRound size={15} /> Use hospital SSO <ChevronRight size={15} /></button></div>
+            </section>
           </form>
 
-          <div className="or-divider"><span>OR</span></div>
-          <button type="button" className="sso-button" onClick={() => toast.info("Single sign-on will redirect you to your organization provider.")}><LockKeyhole size={16} /> Continue with hospital SSO <ChevronRight size={16} /></button>
-
-          <p className="access-note"><ShieldCheck size={15} /> This is a restricted healthcare workspace. Unauthorized access is monitored.</p>
+          <div className="ai-margin-note"><span><Sparkles size={15} /></span><p><strong>Quiet by design.</strong> This access flow keeps only the decisions you need before your shift begins.</p></div>
         </div>
 
-        <footer className="login-footer"><span>Need access? <button type="button" onClick={() => toast.info("Contact your hospital manager for a workspace invitation.")}>Contact your manager</button></span><a href="#support" onClick={(event) => { event.preventDefault(); toast.info("Support is available 24/7 for hospital teams."); }}>System support</a></footer>
+        <footer className="sheet-footer"><span><LockKeyhole size={13} /> Encrypted session & role-based workspace</span><div><button type="button" onClick={() => toast.info("Contact your hospital manager for an invitation.")}>Need access?</button><i /> <button type="button" onClick={() => toast.info("Support is available 24/7 for hospital teams.")}>Support</button></div></footer>
       </main>
     </div>
   );

@@ -1,39 +1,39 @@
 # MedoraCare — Hospital Portal Login Direction
 
-## चुना गया design direction: Clinical Clarity
+## चुना गया design direction: Clinical Editorial Protocol
 
 ### Design Movement
 
-यह direction **Contemporary Healthcare Operations Design** पर आधारित है: clinical trust, calm information hierarchy और fast role-based access को refined visual discipline के साथ combine करना। उद्देश्य एक ऐसा entrance experience बनाना है जो busy hospital teams को immediately focused और secure feel कराए।
+यह direction **Clinical Editorial Systems** से प्रेरित है: hospital access को generic SaaS login की तरह नहीं, बल्कि a clear pre-shift briefing sheet की तरह present करना। The interface uses an asymmetric “care protocol” composition, numbered access steps, a system-status pulse, and large editorial typography so busy teams feel focused before their shift begins.
 
 ### Core Principles
 
-1. **Role first:** Receptionist और Hospital Manager को पहली screen पर distinct, understandable workspace choices मिलें।
-2. **Clinical calm:** Cool navy, clean white surfaces और measured spacing pressure को कम करें तथा clarity बढ़ाएँ।
-3. **Secure but human:** Security signals visible रहें, लेकिन fear-based या overly technical language न हो।
+1. **Protocol, not portal:** The interface should feel like a concise access briefing, using numbered sections and purposeful prompts.
+2. **Role first:** Receptionist और Hospital Manager को distinctive operating contexts के साथ immediate selection मिलना चाहिए।
+3. **Clinical calm:** Cool navy, clean white surfaces और measured spacing pressure को कम करें तथा clarity बढ़ाएँ।
 4. **Fast access:** Login flow short, keyboard-friendly और mobile पर easily usable रहे।
 
 ### Color Philosophy
 
-Deep hospital navy (`#123846`) trust, continuity और clinical composure create करता है। Soft white (`#F8FAFB`) form area को clean और legible रखता है। Calm teal (`#70D1C2`) focus, active state तथा care signal के रूप में limited use होता है। Dark mode में surfaces blue-charcoal और text cool-white रहे ताकि long shifts में glare कम हो।
+Deep hospital navy (`#102D3B`) is the structural anchor. A warmer clinical paper (`#F5F6F0`) makes the main access sheet feel considered rather than default-white. Glass teal (`#5FD0C0`) is reserved for the active care path and system status, while restrained coral only signals attention. Dark mode uses layered blue-charcoal surfaces and low-luminance teal to reduce glare on long shifts.
 
 ### Layout Paradigm
 
-Desktop पर split-screen composition है: left side institutional context और product confidence दिखाता है; right side single focused access flow देता है। Mobile पर introduction compact hero बनता है और login form one-column priority layout में आता है।
+Desktop पर a wide **care-signal canvas** and a narrower **access sheet** sit side-by-side, separated by an inset spine rather than a generic two-column split. The care-signal canvas introduces the live access protocol, while the sheet has three numbered stages: identify role, authenticate, and enter workspace. Mobile पर the briefing condenses into a short protocol banner and the sheet becomes a single-column sequence.
 
 ### Signature Elements
 
-1. **Heart-pulse brand mark:** Simple healthcare symbol, which works at app-icon scale.
-2. **Clinical grid and circular care path:** The visual language supports structure without needing imagery.
-3. **Role cards:** Icon, explanatory copy and clear selected state make access context visible.
+1. **Pulse orbit:** A CSS-only circular care path and single pulse dot act as the brand’s spatial anchor.
+2. **Protocol numerals:** Oversized 01/02/03 markers make the access flow feel authored and fast to scan.
+3. **Care status rail:** Short, precise operational-status statements establish context without looking like dashboard clutter.
 
 ### Interaction Philosophy
 
-Users can switch their role, reveal or conceal a password, submit login validation, request a password reset, and switch light/dark mode. Dark mode is retained during the active browser session.
+Users can switch their role, reveal or conceal a password, submit login validation, request a password reset, and switch light/dark mode. Selected roles alter the access-context note. Dark mode is retained during the active browser session.
 
 ### Typography System
 
-**Manrope** carries the confident headlines and product wordmark. **DM Sans** supports form labels, legal/support copy and operational descriptions. Dense text remains restrained, with clear uppercase labels for context.
+**Manrope** carries the editorial display moments and product wordmark. **DM Sans** supports labels, access details and operational descriptions. Numerals are compact, oversized and deliberately spaced, while form labels remain concise uppercase microcopy.
 
 ### Brand Essence
 
