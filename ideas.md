@@ -1,31 +1,31 @@
 # Spendwise AI — Expense Management Direction
 
-## चुना गया design direction: Ledger Signal Studio
+## चुना गया design direction: Obsidian Ledger
 
 ### Design Movement
 
-यह direction **Contemporary Editorial Fintech** से प्रेरित है: expense management को generic table app नहीं, बल्कि a clear financial signal desk की तरह present करना। The interface uses warm mineral surfaces, dark teal data canvases, sharp metric hierarchy, and a focused AI margin-note treatment.
+यह direction **Contemporary Financial Intelligence** से प्रेरित है: expense management को generic green dashboard नहीं, बल्कि a high-contrast financial command desk की तरह present करना। The interface uses graphite depths, precise ledger lines, floating data slabs, and a single electric signal color that makes important movement unmistakable.
 
 ### Core Principles
 
-1. **Signals, not noise:** The dashboard should show the money picture before dense transaction detail.
-2. **Private by design:** Every transaction and budget remains scoped to the signed-in user.
-3. **AI with boundaries:** The insight service uses selected-month aggregates only; it provides descriptive observations, not financial recommendations.
-4. **Progressive detail:** Summary cards lead into ledger, budgets and a focused AI brief.
+1. **Command, not clutter:** The dashboard should feel decisive at first glance, with one strong hierarchy for money movement.
+2. **Graphite confidence:** Dark surfaces should feel tailored and calm—not gamer-like or visually noisy.
+3. **AI as an instrument:** The AI brief must look like a financial intelligence module, not a chat feature.
+4. **Progressive depth:** Primary numbers lead to a ledger, budgets and insight surfaces without competing visual languages.
 
 ### Color Philosophy
 
-Verdant Teal (`#0D8178`) is the structural anchor. Warm mineral paper (`#F5F6F0`) makes the workspace editorial rather than sterile. Lime paper (`#DCF99C`) highlights AI actions, while coral and violet distinguish categories without overwhelming the financial hierarchy. Dark mode moves the workspace into layered blue-charcoal surfaces with low-luminance teal accents.
+Obsidian (`#111315`) and graphite (`#191D20`) form the dominant workspace layers. Chrome (`#E8ECEB`) provides crisp ledger contrast; mist (`#9EA8A5`) handles secondary data. Electric mint (`#A6FF8F`) is reserved for committed actions and AI readiness, while pale cobalt and smoked apricot distinguish category data. The previous green field is removed completely; green becomes a rare signal rather than the background language.
 
 ### Layout Paradigm
 
-Desktop पर a wide dashboard canvas uses a metric strip, spending trajectory, budget pulse and AI brief. The ledger and budget studio are separate focused pages, while the AI brief makes the aggregate-data boundary explicit. Mobile पर these sections collapse into a deliberate one-column financial review.
+Desktop पर an inset graphite rail, an asymmetric metric masthead, and layered data slabs create a financial-terminal character. The ledger is dense but breathable, while the AI brief uses a quiet dark instrument panel with an animated signal bar. Mobile पर the same surfaces become a deliberate vertical sequence rather than shrinking the desktop layout.
 
 ### Signature Elements
 
-1. **Spend signal orbit:** A CSS-only orbit frames the AI insight surface.
-2. **Ledger lines:** Fine dividers and vertical rhythm give transaction data a structured financial character.
-3. **AI margin note:** Lime-accented insights read like concise editorial annotations rather than a chatbot.
+1. **Signal aperture:** A thin, glowing radial aperture frames the AI panel and becomes the signature spatial mark.
+2. **Ledger grid:** Fine low-contrast grid lines and a numeric rail give every data surface structure.
+3. **Motion strip:** A compact, animated activity strip signals financial analysis without an illustrative gimmick.
 
 ### Interaction Philosophy
 
@@ -33,10 +33,10 @@ Users can securely sign in, add and delete expense records, set category budgets
 
 ### Typography System
 
-**Manrope** carries the editorial display moments and product wordmark. **DM Sans** supports labels, access details and operational descriptions. Numerals are compact, oversized and deliberately spaced, while form labels remain concise uppercase microcopy.
+**Sora** carries the sharp, technical display moments and product wordmark. **DM Sans** supports labels, ledger details and operational descriptions. Numbers are oversized, tightly tracked and rendered in cool chrome, while labels remain concise uppercase microcopy.
 
 ### Brand Essence
 
 **Spendwise AI is a private expense workspace for people who want every rupee to have a clearer next move.**
 
-Personality adjectives: **assured, precise, encouraging**.
+Personality adjectives: **assured, intelligent, exacting**.

@@ -22,3 +22,11 @@ export const setBudgetInput = z.object({
 });
 
 export const dashboardInput = z.object({ periodKey: periodKeySchema });
+
+/** Strict response contract for aggregate-only AI expense observations. */
+export const expenseInsightOutput = z.object({
+  headline: z.string().trim().min(1).max(180),
+  observation: z.string().trim().min(1).max(900),
+  nextStep: z.string().trim().min(1).max(360),
+  focusCategory: expenseCategorySchema,
+});

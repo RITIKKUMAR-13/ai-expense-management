@@ -21,7 +21,7 @@ import {
   updateAppointmentStatusInput,
   updatePatientStatusInput,
 } from "./hospitalSchemas";
-import { createExpenseInput, dashboardInput, deleteExpenseInput, setBudgetInput } from "./expenseSchemas";
+import { createExpenseInput, dashboardInput, deleteExpenseInput, expenseInsightOutput, setBudgetInput } from "./expenseSchemas";
 import { invokeLLM } from "./_core/llm";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 
@@ -120,7 +120,7 @@ export const appRouter = router({
       });
       const raw = response.choices[0]?.message.content;
       if (typeof raw !== "string") throw new Error("AI insight response was unavailable.");
-      return JSON.parse(raw) as { headline: string; observation: string; nextStep: string; focusCategory: string };
+      return expenseInsightOutput.parse(JSON.parse(raw));
     }),
   }),
 });

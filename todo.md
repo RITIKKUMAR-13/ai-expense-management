@@ -37,3 +37,14 @@
 - [x] Add a server-side AI insight service that summarizes only user-authorized expense aggregates.
 - [x] Rebuild the responsive UI with dashboard, transactions, budgets, insights, and dark mode.
 - [x] Save final checkpoint and deliver the validated Spendwise AI working website.
+
+## Professional Dark Theme Refinement
+
+- [x] Define a graphite, high-contrast visual system with restrained accent signals.
+- [x] Replace the green-led dashboard surfaces with a distinctive professional dark composition.
+- [x] Refine typography, navigation, metrics, charts, AI cards, and controls for the new theme.
+- [x] Validate dark desktop and mobile presentation without changing finance workflows.
+- [x] Validate the dark presentation across expense ledger, budgets, and AI insight routes.
+- [x] Confirm post-redesign finance safety through TypeScript and automated workflow-contract tests.
+- [x] Add explicit expense, budget, ledger-filter, and AI insight contract tests before final delivery.
+- [ ] Deliver the refined dark Spendwise experience.
