@@ -47,4 +47,13 @@
 - [x] Validate the dark presentation across expense ledger, budgets, and AI insight routes.
 - [x] Confirm post-redesign finance safety through TypeScript and automated workflow-contract tests.
 - [x] Add explicit expense, budget, ledger-filter, and AI insight contract tests before final delivery.
-- [ ] Deliver the refined dark Spendwise experience.
+- [x] Deliver the refined dark Spendwise experience.
+
+## Finance Dashboard UI & Budget Remaining Refinement
+
+- [x] Define a cleaner dashboard composition distinct from the current Obsidian Ledger layout.
+- [x] Repair theme switching so light and dark preferences apply and persist reliably.
+- [x] Show each category budget with planned, spent, and remaining amounts in the dashboard and budget view.
+- [x] Update metrics, charts, and navigation to match the revised UI direction.
+- [x] Validate budget math, theme persistence, and responsive layout.
+- [ ] Deliver the revised finance dashboard.
