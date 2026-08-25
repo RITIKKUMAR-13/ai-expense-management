@@ -1,13 +1,15 @@
+/**
+ * Hospital login design reminder: clinical confidence, cool navy depth, warm surfaces,
+ * teal as the trusted access signal, and a restrained responsive interface.
+ */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "DM Sans", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -27,151 +29,123 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
+  --radius: 0.75rem;
+  --background: oklch(0.98 0.005 220);
+  --foreground: oklch(0.235 0.035 238);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --card-foreground: oklch(0.235 0.035 238);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
-
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --popover-foreground: oklch(0.235 0.035 238);
+  --primary: oklch(0.46 0.095 196);
+  --primary-foreground: oklch(0.99 0.003 220);
+  --secondary: oklch(0.95 0.012 205);
+  --secondary-foreground: oklch(0.3 0.04 235);
+  --muted: oklch(0.95 0.008 225);
+  --muted-foreground: oklch(0.54 0.025 235);
+  --accent: oklch(0.93 0.035 195);
+  --accent-foreground: oklch(0.3 0.04 235);
+  --destructive: oklch(0.62 0.15 28);
+  --destructive-foreground: oklch(0.985 0.003 220);
+  --border: oklch(0.89 0.012 220);
+  --input: oklch(0.89 0.012 220);
+  --ring: oklch(0.46 0.095 196);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; font-family: "DM Sans", sans-serif; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [type="button"]:not(:disabled), [type="submit"]:not(:disabled), [type="reset"]:not(:disabled), a[href], select:not(:disabled), input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled) { @apply cursor-pointer; }
+  button:active { transform: scale(0.975); }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
-  }
-
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
-
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
-    }
-  }
+  .hospital-shell { --stage-bg: #f8fafb; --stage-ink: #142f3d; --muted-ink: #71818b; --line: #dfe7e9; --control-bg: #ffffff; --control-soft: #f4f8f8; --role-hover: #f5fbfa; --intro-ink: #f9fdfd; display: grid; min-height: 100vh; grid-template-columns: minmax(360px, 42.5%) 1fr; background: var(--stage-bg); color: var(--stage-ink); transition: background-color 220ms ease-out, color 220ms ease-out; }
+  .hospital-dark { --stage-bg: #10202b; --stage-ink: #e8f2f3; --muted-ink: #9cafb6; --line: #28404b; --control-bg: #162934; --control-soft: #1a303b; --role-hover: #1b3540; --intro-ink: #f4fbfa; }
+  .hospital-intro { position: relative; overflow: hidden; display: flex; min-height: 100vh; flex-direction: column; justify-content: space-between; padding: clamp(2rem, 4vw, 3.65rem); background: #123846; color: var(--intro-ink); }
+  .hospital-intro::before { content: ""; position: absolute; right: -17vw; bottom: -17vw; height: min(44vw, 590px); width: min(44vw, 590px); border: 1px solid rgba(155, 232, 218, 0.25); border-radius: 999px; box-shadow: 0 0 0 48px rgba(155, 232, 218, 0.035), 0 0 0 96px rgba(155, 232, 218, 0.028), 0 0 0 144px rgba(155, 232, 218, 0.02); }
+  .hospital-intro::after { content: ""; position: absolute; right: 15%; top: 30%; height: 100px; width: 100px; border-radius: 50% 50% 4px 50%; border: 1px solid rgba(196, 247, 237, 0.33); transform: rotate(45deg); }
+  .hospital-intro-grid { position: absolute; inset: 0; opacity: 0.2; background-image: linear-gradient(rgba(221,249,243,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(221,249,243,0.2) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 72%); }
+  .hospital-intro-content, .intro-footer { position: relative; z-index: 1; }
+  .brand-lockup { display: flex; align-items: center; gap: 0.7rem; }
+  .brand-symbol { display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; width: 2.35rem; border-radius: 0.75rem; background: #70d1c2; color: #113944; box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+  .brand-name { font-family: "Manrope", sans-serif; font-size: 1.12rem; font-weight: 800; letter-spacing: -0.055em; }
+  .brand-name span { color: #7ee1d1; }
+  .intro-copy { margin-top: auto; padding-top: clamp(6rem, 16vh, 10rem); max-width: 470px; }
+  .intro-kicker, .overline { display: flex; align-items: center; gap: 0.55rem; font-size: 10px; font-weight: 700; letter-spacing: 0.17em; }
+  .intro-kicker { color: #a7d7ce; }
+  .intro-kicker span { height: 0.45rem; width: 0.45rem; border-radius: 999px; background: #70d1c2; }
+  .intro-copy h1 { margin-top: 1.35rem; font-family: "Manrope", sans-serif; font-size: clamp(2.8rem, 4.15vw, 4.45rem); font-weight: 800; letter-spacing: -0.075em; line-height: 1.03; }
+  .intro-description { margin-top: 1.5rem; max-width: 410px; color: #b9d7d2; font-size: 1rem; line-height: 1.72; }
+  .intro-features { display: grid; gap: 1rem; margin-top: clamp(3rem, 7vh, 5.25rem); }
+  .intro-feature { display: flex; align-items: center; gap: 0.8rem; }
+  .intro-feature > span { display: inline-flex; height: 2.25rem; width: 2.25rem; align-items: center; justify-content: center; border: 1px solid rgba(180,235,224,0.24); border-radius: 0.7rem; color: #80dfd0; background: rgba(255,255,255,0.05); }
+  .intro-feature p { color: #effafa; font-size: 0.83rem; font-weight: 700; }
+  .intro-feature small { display: block; margin-top: 0.15rem; color: #a8cbc5; font-size: 0.71rem; }
+  .intro-footer { display: flex; justify-content: space-between; color: #82afa7; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; }
+  .login-stage { display: flex; min-width: 0; flex-direction: column; padding: clamp(1.35rem, 3vw, 3rem); }
+  .login-header { display: flex; align-items: center; justify-content: flex-end; min-height: 42px; }
+  .brand-mobile { display: none; color: var(--stage-ink); margin-right: auto; }
+  .brand-mobile .brand-symbol { height: 2rem; width: 2rem; background: #163f4b; color: #83e3d4; box-shadow: none; }
+  .brand-mobile .brand-name span { color: #249a90; }
+  .theme-switch { display: flex; gap: 0.15rem; padding: 0.22rem; border: 1px solid var(--line); border-radius: 0.7rem; background: var(--control-bg); color: var(--muted-ink); box-shadow: 0 2px 7px rgba(18,45,55,0.04); }
+  .theme-switch > span { display: inline-flex; height: 1.75rem; width: 1.75rem; align-items: center; justify-content: center; border-radius: 0.48rem; transition: background-color 180ms ease-out, color 180ms ease-out; }
+  .theme-switch-active { background: #153e4a; color: #83e3d4; }
+  .hospital-dark .theme-switch-active { background: #80dfd0; color: #133845; }
+  .login-frame { width: 100%; max-width: 455px; margin: auto; padding: 2rem 0 1.2rem; }
+  .login-heading h2 { margin-top: 0.8rem; color: var(--stage-ink); font-family: "Manrope", sans-serif; font-size: clamp(2rem, 3vw, 2.55rem); font-weight: 800; letter-spacing: -0.07em; }
+  .login-heading p:last-child { margin-top: 0.75rem; color: var(--muted-ink); font-size: 0.93rem; line-height: 1.58; }
+  .overline { color: #218d85; }
+  .role-picker { display: grid; gap: 0.65rem; margin-top: 2rem; }
+  .role-option { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.8rem; width: 100%; padding: 0.92rem; border: 1px solid var(--line); border-radius: 0.9rem; background: var(--control-bg); color: var(--stage-ink); text-align: left; transition: border-color 170ms ease-out, background-color 170ms ease-out, box-shadow 170ms ease-out, transform 170ms ease-out; }
+  .role-option:hover { background: var(--role-hover); border-color: #9fcfc7; }
+  .role-option-active { border-color: #2f9e93; background: var(--role-hover); box-shadow: 0 0 0 3px rgba(47,158,147,0.13); }
+  .role-icon { display: inline-flex; height: 2.45rem; width: 2.45rem; align-items: center; justify-content: center; border-radius: 0.7rem; background: #e5f3f0; color: #147b72; }
+  .hospital-dark .role-icon { background: #204953; color: #85e1d4; }
+  .role-copy { min-width: 0; }
+  .role-copy strong { display: block; font-family: "Manrope", sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: -0.025em; }
+  .role-copy small { display: block; margin-top: 0.22rem; color: var(--muted-ink); font-size: 0.72rem; line-height: 1.35; }
+  .role-radio { display: inline-flex; height: 1.25rem; width: 1.25rem; align-items: center; justify-content: center; color: #128b7d; }
+  .login-form { margin-top: 1.65rem; }
+  .field-label { display: block; margin-bottom: 0.48rem; color: var(--stage-ink); font-size: 0.75rem; font-weight: 700; }
+  .hospital-input { height: 2.9rem; border-color: var(--line); border-radius: 0.75rem; background: var(--control-bg); color: var(--stage-ink); font-size: 0.86rem; box-shadow: none; transition: border-color 170ms ease-out, box-shadow 170ms ease-out, background-color 170ms ease-out; }
+  .hospital-input::placeholder { color: #96a5ac; }
+  .hospital-input:focus-visible { border-color: #2d9d92; box-shadow: 0 0 0 3px rgba(45,157,146,0.13); }
+  .text-button { color: #16887e; font-size: 0.73rem; font-weight: 700; transition: color 170ms ease-out; }
+  .text-button:hover { color: #0b655e; text-decoration: underline; }
+  .password-field { position: relative; margin-top: 0.45rem; }
+  .password-toggle { position: absolute; right: 0.55rem; top: 0.45rem; display: inline-flex; height: 2rem; width: 2rem; align-items: center; justify-content: center; border-radius: 0.55rem; color: var(--muted-ink); transition: background-color 170ms ease-out, color 170ms ease-out; }
+  .password-toggle:hover { background: var(--control-soft); color: #16887e; }
+  .signin-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1.15rem; }
+  .remember-check { display: inline-flex; align-items: center; gap: 0.48rem; color: var(--muted-ink); font-size: 0.73rem; font-weight: 600; }
+  .remember-check input { position: absolute; opacity: 0; }
+  .remember-check span { height: 1rem; width: 1rem; border: 1px solid var(--line); border-radius: 0.3rem; background: var(--control-bg); transition: background-color 150ms ease-out, border-color 150ms ease-out; }
+  .remember-check input:checked + span { border-color: #198d82; background: #198d82; box-shadow: inset 0 0 0 3px var(--control-bg); }
+  .signin-role { color: var(--muted-ink); font-size: 0.67rem; text-align: right; }
+  .signin-role strong { color: var(--stage-ink); }
+  .signin-button { display: flex; height: 3rem; width: 100%; align-items: center; justify-content: center; gap: 0.55rem; margin-top: 1.4rem; border-radius: 0.8rem; background: #164450; color: #f7fcfb; font-size: 0.84rem; font-weight: 700; box-shadow: 0 10px 20px rgba(20,61,70,0.16); transition: background-color 170ms ease-out, transform 170ms ease-out; }
+  .signin-button:hover { background: #0f353e; }
+  .hospital-dark .signin-button { background: #74d6c8; color: #123943; }
+  .hospital-dark .signin-button:hover { background: #95e6d9; }
+  .or-divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem 0; color: var(--muted-ink); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; }
+  .or-divider::before, .or-divider::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+  .sso-button { display: flex; width: 100%; align-items: center; justify-content: center; gap: 0.55rem; min-height: 2.85rem; border: 1px solid var(--line); border-radius: 0.75rem; background: var(--control-bg); color: var(--stage-ink); font-size: 0.8rem; font-weight: 700; transition: background-color 170ms ease-out, border-color 170ms ease-out; }
+  .sso-button svg:last-child { margin-left: auto; margin-right: 0.75rem; color: var(--muted-ink); }
+  .sso-button:hover { background: var(--role-hover); border-color: #9fcfc7; }
+  .access-note { display: flex; align-items: flex-start; gap: 0.45rem; margin-top: 1.35rem; color: var(--muted-ink); font-size: 0.68rem; line-height: 1.5; }
+  .access-note svg { flex: 0 0 auto; margin-top: 1px; color: #2a978c; }
+  .login-footer { display: flex; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1.5rem; color: var(--muted-ink); font-size: 0.7rem; }
+  .login-footer button, .login-footer a { color: #167f77; font-weight: 700; }
+  .login-footer a:hover, .login-footer button:hover { text-decoration: underline; }
 }
+
+@media (prefers-reduced-motion: no-preference) { .login-frame { animation: login-rise 430ms cubic-bezier(0.23, 1, 0.32, 1) both; } .role-option:nth-child(2) { animation: login-rise 430ms 55ms cubic-bezier(0.23, 1, 0.32, 1) both; } }
+@keyframes login-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 880px) { .hospital-shell { grid-template-columns: 1fr; } .hospital-intro { min-height: 305px; padding: 2rem 1.6rem; } .hospital-intro .intro-copy { margin-top: 0; padding-top: 3.8rem; } .intro-copy h1 { font-size: clamp(2.55rem, 9vw, 3.7rem); } .intro-description, .intro-features { display: none; } .intro-footer { display: none; } .login-stage { min-height: calc(100vh - 305px); } .brand-mobile { display: flex; } }
+@media (max-width: 520px) { .hospital-intro { min-height: 258px; padding: 1.5rem; } .hospital-intro .intro-copy { padding-top: 3rem; } .intro-copy h1 { font-size: 2.35rem; } .login-stage { min-height: calc(100vh - 258px); padding: 1.05rem 1.35rem 1.35rem; } .login-frame { padding-top: 2.6rem; } .signin-row { align-items: flex-start; flex-direction: column; } .signin-role { text-align: left; } .login-footer { flex-direction: column; gap: 0.55rem; } }
